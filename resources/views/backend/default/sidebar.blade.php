@@ -46,6 +46,8 @@
                 $(this).removeClass("active");
             });
             $(this).parent().addClass('active');
+            $(".sidebar-nav").removeClass("in");
+            $(".sidebar-nav").attr("aria-expanded", "false");
         });
     });
 </script>

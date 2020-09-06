@@ -18,7 +18,7 @@
     <ul class="nav navbar-right navbar-top-links">
         <li class="dropdown">
             <a class="dropdown-toggle" data-toggle="dropdown" href="#">
-                <i class="fa fa-user fa-fw"></i> {{ Auth::user()->name }} <b class="caret"></b>
+                <i class="fa fa-user fa-fw"></i> <span class="user-name">{{ Auth::user()->name }}</span><b class="caret"></b>
             </a>
             <ul class="dropdown-menu dropdown-user">
                 <li>
@@ -45,5 +45,20 @@
                 $(this).removeClass("active");
             });
         });
+
+        /*Desktop*/
+        if($(window).width() > 940){
+
+        }
+        /*Tablets*/
+        if($(window).width() <= 940 && $(window).width() > 780){
+            $(".user-name").remove();
+            
+        }
+        /*Mobiles*/
+        if($(window).width() <= 780){
+            $(".user-name").remove();
+            $(".sidebar-nav ul.nav").css({"margin-top":"50px"});
+        }
     });
 </script>

@@ -49,7 +49,8 @@
                     "data": "path",
                     "sortable": false,
                     "title": "Image",
-                    "width": "60"
+                    "width": "60",
+                    "visible": $(window).width() <= 780 ? false : true
                 },
                 {
                     "data": "title",
@@ -58,7 +59,8 @@
                 {
                     "data": "updated_at",
                     "title": "Updated at",
-                    "width": "80"
+                    "width": "80",
+                    "visible": $(window).width() <= 780 ? false : true
                 },
                 {
                     "data": "actions",

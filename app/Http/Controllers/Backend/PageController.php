@@ -34,9 +34,9 @@ class PageController extends AdminManager
     {
         $entity = Page::findorfail($id);
         $translations = array();
-        foreach($this->getArrayLocale() as $key => $value){
+        foreach($this->getArrayLocale() as $key => $language){
             if($key > 0){
-                $translations[$value] = $this->getEntityTranslations($entity, $value);
+                $translations[$language] = $this->getEntityTranslations($entity, $language);
             }
         }
         return view('backend.page.edit')
@@ -49,15 +49,19 @@ class PageController extends AdminManager
     {
         $entity = Page::findorfail($id);
         $translations = array();
-        foreach($this->getArrayLocale() as $key => $value){
+        foreach($this->getArrayLocale() as $key => $lan){
             if($key > 0){
-                $translations[$value] = $this->getEntityTranslations($entity, $value);
+                $translations[$lan] = $this->getEntityTranslations($entity, $lan);
             }
         }
         $category_translations = array();
-        foreach($this->getArrayLocale() as $key => $value){
-            if($key > 0)
-                $category_translations[$value][] = $this->getEntityTranslations($entity->category(), $value)->title;
+        foreach($this->getArrayLocale() as $key => $lan){
+            if($key > 0){
+                if($entity->category() != NULL){
+                    dump('xxx');die;
+                    $category_translations[$lan][] = $this->getEntityTranslations($entity->category(), $lan)->title;
+                }
+            }
         }
         return view('backend.page.show')
             ->with('entity', $entity)

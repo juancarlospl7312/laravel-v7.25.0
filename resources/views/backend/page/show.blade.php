@@ -33,10 +33,12 @@
                                     <div class="col-lg-10"><div>{!! $entity->content !!}</div></div>
                                 </div>
                                 <div class="clearfix"></div><br>
+                                @if($entity->category())
                                 <div class="form-group">
                                     <div class="col-lg-2"><label class="control-label">Category:</label></div>
                                     <div class="col-lg-10"><div>{!! $entity->category()->title !!}</div></div>
                                 </div>
+                                @endif
                             </div>
                             <!-- /.tab-pane -->
                             <div class="tab-pane" id="tab_es">
@@ -60,10 +62,12 @@
                                     <div class="col-lg-10"><div>{!! $translations['es']->content !!}</div></div>
                                 </div>
                                 <div class="clearfix"></div><br>
+                                @if($category_translations)
                                 <div class="form-group">
                                     <div class="col-lg-2"><label class="control-label">Categoría:</label></div>
                                     <div class="col-lg-10"><div>{{ $category_translations['es'][0] }}</div></div>
                                 </div>
+                                @endif
                             </div>
                             <!-- /.tab-pane -->
                         </div>
