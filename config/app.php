@@ -26,7 +26,7 @@ return [
     |
     */
 
-    'env' => env('APP_ENV', 'production'),
+    'env' => env('APP_ENV', 'development'),
 
     /*
     |--------------------------------------------------------------------------
@@ -39,7 +39,7 @@ return [
     |
     */
 
-    'debug' => (bool) env('APP_DEBUG', false),
+    'debug' => (bool) env('APP_DEBUG', true),
 
     /*
     |--------------------------------------------------------------------------
@@ -67,7 +67,7 @@ return [
     |
     */
 
-    'timezone' => 'UTC',
+    'timezone' => 'Asia/Karachi',
 
     /*
     |--------------------------------------------------------------------------
@@ -120,7 +120,7 @@ return [
     |
     */
 
-    'key' => env('APP_KEY', base64_decode('AaFXBYjN3LyJMZ8s4kgE+Lm+CCN0y9ypPhyiahAc/8U=')),
+    'key' => env('APP_KEY', base64_decode('aXrjUWDPUghb08WdkIBP8lJfI6vSN2rKBDdbfObFx7c=')),
 
     'cipher' => 'AES-256-CBC',
 

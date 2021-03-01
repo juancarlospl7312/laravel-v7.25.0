@@ -160,50 +160,13 @@ class AdminManager extends Controller
     public function uploadFile($entity, $file)
     {
         if($file->getSize() < 1048576/*1MB*/){
-            $path = $file->store('public/'.$entity->getTable(), 'local');
+            $path = $file->store($entity->getTable(), 'local');
             if($entity != null){
                 $this->deleteFile($entity->path);
             }
-            if(is_dir(getcwd().'/storage')){
-                $this->rmDir_rf(getcwd().'/storage');
-            }
-            mkdir(getcwd().'/storage');
-            $this->recurse_copy(getcwd().'/../storage/app/public',getcwd().'/storage');
-
-            $path = explode('public/', $path);
-            $entity->path = $path[1];
+            $entity->path = $path;
         }
         return $entity;
-    }
-
-    function recurse_copy($src,$dst) {
-        $dir = opendir($src);
-        @mkdir($dst);
-        while(false !== ( $file = readdir($dir)) ) {
-            if ($file != '.' && $file != '..') {
-                if ( is_dir($src . '/' . $file) ) {
-                    $this->recurse_copy($src . '/' . $file,$dst . '/' . $file);
-                }
-                else {
-                    copy($src . '/' . $file,$dst . '/' . $file);
-                }
-            }
-        }
-        closedir($dir);
-    }
-    function rmDir_rf($directory)
-    {
-        $objects = scandir($directory);
-        foreach($objects as $item){
-            if ($item != '.' && $item != '..') {
-                if (is_dir($directory .'/'.$item)){
-                    $this->rmDir_rf($directory .'/'.$item);
-                } else {
-                    unlink($directory .'/'.$item);
-                }
-            }
-        }
-        rmdir($directory);
     }
 
     public function addManyToMany($entity, $array_many_to_many)
@@ -229,12 +192,6 @@ class AdminManager extends Controller
         else{
             $this->deleteFile($entity->path);
         }
-
-        if(is_dir(getcwd().'/storage')){
-            $this->rmDir_rf(getcwd().'/storage');
-        }
-        mkdir(getcwd().'/storage');
-        $this->recurse_copy(getcwd().'/../storage/app/public',getcwd().'/storage');
 
         $entity->delete();
         if($this->translatable){
@@ -267,9 +224,9 @@ class AdminManager extends Controller
     public function deleteFile($path)
     {
         if($path != null){
-            if (file_exists(getcwd().'/../storage/app/public/'.$path)) {
+            if (file_exists(getcwd().'/storage/'.$path)) {
                 // Delete file.
-                unlink(getcwd().'/../storage/app/public/'.$path);
+                unlink(getcwd().'/storage/'.$path);
             }
         }
     }
