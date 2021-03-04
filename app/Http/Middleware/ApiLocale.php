@@ -30,9 +30,6 @@ class ApiLocale
             abort(404);
         }
 
-
-
-
         return $next($request);
     }
 }

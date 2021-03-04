@@ -14,6 +14,11 @@
                             <span class="help-block"></span>
                         </div>
                         <div class="form-group">
+                            <label for="name">Username *</label>
+                            <input type="text" class="form-control" name="username" id="username" required="required">
+                            <span class="help-block"></span>
+                        </div>
+                        <div class="form-group">
                             <label for="email">Email *</label>
                             <input type="email" class="form-control" name="email" id="email" required="required">
                             <span class="help-block"></span>

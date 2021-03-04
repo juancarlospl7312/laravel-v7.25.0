@@ -19,7 +19,7 @@ Auth::routes();
 Route::get('/logout', 'Auth\LoginController@logout');
 
 Route::group(['prefix' => '/admin', 'middleware' => 'auth'],function () {
-    Route::get('/', 'Backend\DefaultController@index');
+    Route::get('/', 'Backend\DefaultController@index')->name('admin');
     Route::get('/dashboard', 'Backend\DefaultController@dashboard');
     Route::post('/uploadFileCKEditor', 'Backend\DefaultController@uploadFileCKEditor');
     Route::post('/deleteFileCKEditor', 'Backend\DefaultController@deleteFileCKEditor');
@@ -105,5 +105,5 @@ Route::group(['prefix' => '/admin', 'middleware' => 'auth'],function () {
 });
 
 Route::group(['prefix' => '/{locale?}', 'middleware' => 'api.locale'], function () {
-    Route::get('/', 'Frontend\DefaultController@index');
+    Route::get('/', 'Frontend\DefaultController@index')->name('home');
 });
